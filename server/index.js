@@ -38,19 +38,27 @@ app.use("/management",managementRoutes);
 app.use("/sales",salesRoutes);
 
 /** MONGOOSE SETUP */
-const PORT=process.env.PORT || 9000;
-mongoose.connect(process.env.MONGO_URL,{
-    useNewUrlParser: true,
-    useUnifiedTopology:true
-}).then(()=>{
-    app.listen(PORT,() => console.log(`Server Port: ${PORT}`));
 
-    /**Adding data one time only once more*/
-    //Adding more comments to update the commit
-    // User.insertMany(dataUser);
-    // Product.insertMany(dataProduct);
-    // ProductStat.insertMany(dataProductStat);
-    // Transaction.insertMany(dataTransaction);
-    // OverallStat.insertMany(dataOverallStat);
-    // AffiliateStat.insertMany(dataAffiliateStat);
-}).catch((error) => console.error(`${error} did not connect`));
+const startServer = async () => {
+    try {
+        const PORT=process.env.PORT || 9000;
+        mongoose.connect(process.env.MONGO_URL,{
+            useNewUrlParser: true,
+            useUnifiedTopology:true
+        }).then(()=>{
+            app.listen(PORT,() => console.log(`Server Port: ${PORT}`));
+
+            /**Adding data one time only once more*/
+            //Adding more comments to update the commit
+            // User.insertMany(dataUser);
+            // Product.insertMany(dataProduct);
+            // ProductStat.insertMany(dataProductStat);
+            // Transaction.insertMany(dataTransaction);
+            // OverallStat.insertMany(dataOverallStat);
+            // AffiliateStat.insertMany(dataAffiliateStat);
+        }).catch((error) => console.error(`${error} did not connect`));
+    } catch (error) {
+        console.log(error);
+    }
+};
+startServer();

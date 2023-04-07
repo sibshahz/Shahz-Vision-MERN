@@ -1,4 +1,0 @@
-deploy:
-  name: shahz-vision-mern
-  type: node
-  working_directory: ./server/
