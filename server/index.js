@@ -46,6 +46,7 @@ mongoose.connect(process.env.MONGO_URL,{
     app.listen(PORT,() => console.log(`Server Port: ${PORT}`));
 
     /**Adding data one time only once */
+    //Adding more comments to update the commit
     // User.insertMany(dataUser);
     // Product.insertMany(dataProduct);
     // ProductStat.insertMany(dataProductStat);
